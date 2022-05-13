@@ -18,6 +18,16 @@ If you can't find the last version, maybe you need to update local pod repo.
 pod repo update
 ```
 
+### Swift Package Manager
+The Swift Package Manager is a tool for automating the distribution of Swift code and is integrated into the swift compiler.
+
+Once you have your Swift package set up, adding SDBridgeSwift as a dependency is as easy as adding it to the dependencies value of your Package.swift.
+```ruby
+dependencies: [
+    .package(url: "https://github.com/SDBridge/SDBridgeSwift", .upToNextMajor(from: "1.0.1"))
+]
+```
+
 ### Manual installation
 Drag the `WebViewJavascriptBridge` folder into your project.
 
