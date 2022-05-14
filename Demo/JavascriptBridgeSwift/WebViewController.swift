@@ -21,8 +21,19 @@ class WebViewController: UIViewController {
     lazy var callJavascriptBtn: UIButton = {
         let button = UIButton(type: .custom)
         button.frame = CGRect(x: 40, y: KScreenHeight - 100, width: 150, height: 40)
-        button.setTitle("callJavascriptBtn" , for: .normal)
+        button.setTitle("callSyncBtn" , for: .normal)
         button.addTarget(self, action: #selector(callJavascript), for: .touchUpInside)
+        button.layer.masksToBounds = true
+        button.layer.cornerRadius = 6
+        button.backgroundColor = .brown
+        return button
+    }()
+    
+    lazy var callJSAsyncBtn: UIButton = {
+        let button = UIButton(type: .custom)
+        button.frame = CGRect(x: KScreenWidth - 200, y: KScreenHeight - 100, width: 150, height: 40)
+        button.setTitle("callAsyncBtn" , for: .normal)
+        button.addTarget(self, action: #selector(callJSAsyncFunction), for: .touchUpInside)
         button.layer.masksToBounds = true
         button.layer.cornerRadius = 6
         button.backgroundColor = .brown
@@ -58,6 +69,7 @@ class WebViewController: UIViewController {
         // Loading html in local 
         webView.load(request)
         view.addSubview(callJavascriptBtn)
+        view.addSubview(callJSAsyncBtn)
     }
     @objc func callJavascript(_ sender:UIButton){
         let data = ["iOSKey": "iOSValue"]
@@ -69,6 +81,17 @@ class WebViewController: UIViewController {
             print(res)
         }
     }
+    @objc func callJSAsyncFunction(_ sender:UIButton){
+        let data = ["iOSKey": "iOSValue"]
+        bridge.call(handlerName: "AsyncCall", data: data) { responseData in
+            guard let res = responseData else {
+                print("Javascript console.log give native is nil!")
+                return
+            }
+            print(res)
+        }
+    }
+    
     deinit {
         print("\(type(of: self)) release")
     }
