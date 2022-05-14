@@ -1,10 +1,8 @@
 ![](Resource/SDBridgeSwift.png)
 ![language](https://img.shields.io/badge/Language-Swift-green)
 ![language](https://img.shields.io/badge/support-Javascript/Async/Await-green)
-
-[![License MIT](https://img.shields.io/badge/license-MIT-FC89CD.svg?style=flat)](https://github.com/SDBridge/SDBridgeSwift/blob/master/JavascriptBridgeSwift/LICENSE)&nbsp;
 [![Support](https://img.shields.io/badge/support-iOS%209%2B%20-FB7DEC.svg?style=flat)](https://www.apple.com/nl/ios/)&nbsp;
-[![CocoaPods](https://img.shields.io/badge/pod-v1.0.1-green)](http://cocoapods.org/pods/SDBridgeSwift)
+[![CocoaPods](https://img.shields.io/badge/pod-v1.0.2-green)](http://cocoapods.org/pods/SDBridgeSwift)
 [![CocoaPods](https://img.shields.io/badge/support-SwiftPackageManagr-green)](https://www.swift.org/getting-started/#using-the-package-manager)
 
 
