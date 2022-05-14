@@ -41,33 +41,35 @@ var bridge: WebViewJavascriptBridge!
 ```
 1) Instantiate bridge with a WKWebView:
 ```Swift
-
 func setupView() {
-    title = "WebViewController"
-    view.backgroundColor = .white
-    view.addSubview(webView)
-    bridge = WebViewJavascriptBridge(webView: webView)
-    
-    // This can get javascript console.log
-    bridge.consolePipeClosure = { water in
-        guard let jsConsoleLog = water else {
-            print("Javascript console.log give native is nil!")
-            return
+        title = "WebViewController"
+        view.backgroundColor = .white
+        view.addSubview(webView)
+        bridge = WebViewJavascriptBridge(webView: webView)
+        
+        // This can get javascript console.log
+        bridge.consolePipeClosure = { water in
+            guard let jsConsoleLog = water else {
+                print("Javascript console.log give native is nil!")
+                return
+            }
+            print("Next line is Javascript console.log----->>>>>>>")
+            print(jsConsoleLog)
         }
-        print("Next line is Javascript console.log----->>>>>>>")
-        print(jsConsoleLog)
-    }
-    // This register for javascript call
-    bridge.register(handlerName: "DeviceLoadJavascriptSuccess") { (parameters, callback) in
-        let data = ["result":"iOS"]
-        callback?(data)
-    }
-    let fileURL = URL.init(fileURLWithPath: Bundle.main.path(forResource: "Demo", ofType: "html")!)
-    let request = URLRequest.init(url: fileURL, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 15.0)
-    webView.navigationDelegate = self;
-    // Loading html in local 
-    webView.load(request)
-    view.addSubview(callJavascriptBtn)
+        // This register for javascript call
+        bridge.register(handlerName: "DeviceLoadJavascriptSuccess") { (parameters, callback) in
+            let data = ["result":"iOS"]
+            callback?(data)
+        }
+        let fileURL = URL.init(fileURLWithPath: Bundle.main.path(forResource: "Demo", ofType: "html")!)
+        let request = URLRequest.init(url: fileURL, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 15.0)
+        webView.navigationDelegate = self;
+        // Loading html in local ，This way maybe meet cross domain. So You should not forget to set
+        // webView.configuration.preferences.setValue(true, forKey: "allowFileAccessFromFileURLs")
+        // If you loading remote web server,That can be ignored.
+        webView.load(request)
+        view.addSubview(callJavascriptBtn)
+        view.addSubview(callJSAsyncBtn)
     }
 ```
 
