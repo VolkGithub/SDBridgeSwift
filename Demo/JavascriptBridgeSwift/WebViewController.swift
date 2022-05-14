@@ -22,7 +22,7 @@ class WebViewController: UIViewController {
         let button = UIButton(type: .custom)
         button.frame = CGRect(x: 40, y: KScreenHeight - 100, width: 150, height: 40)
         button.setTitle("callSyncBtn" , for: .normal)
-        button.addTarget(self, action: #selector(callJavascript), for: .touchUpInside)
+        button.addTarget(self, action: #selector(callSyncFunction), for: .touchUpInside)
         button.layer.masksToBounds = true
         button.layer.cornerRadius = 6
         button.backgroundColor = .brown
@@ -71,7 +71,7 @@ class WebViewController: UIViewController {
         view.addSubview(callJavascriptBtn)
         view.addSubview(callJSAsyncBtn)
     }
-    @objc func callJavascript(_ sender:UIButton){
+    @objc func callSyncFunction(_ sender:UIButton){
         let data = ["iOSKey": "iOSValue"]
         bridge.call(handlerName: "GetToken", data: data) { responseData in
             guard let res = responseData else {

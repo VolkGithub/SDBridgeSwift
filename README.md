@@ -71,10 +71,10 @@ func setupView() {
     }
 ```
 
-2) Register a handler in Swift, and call a JS handler:
+2)  In Swift, and call a Javascript Sync function:
 
 ```Swift
-  @objc func callJavascript(_ sender:UIButton){
+  @objc func callSyncFunction(_ sender:UIButton){
     let data = ["iOSKey": "iOSValue"]
     bridge.call(handlerName: "GetToken", data: data) { responseData in
         guard let res = responseData else {
@@ -85,6 +85,19 @@ func setupView() {
     }
     }
 ```
+3) In Swift, and call a Javascript Async function:
+```Swift
+  @objc func callJSAsyncFunction(_ sender:UIButton){
+        let data = ["iOSKey": "iOSValue"]
+        bridge.call(handlerName: "AsyncCall", data: data) { responseData in
+            guard let res = responseData else {
+                print("Javascript console.log give native is nil!")
+                return
+            }
+            print(res)
+        }
+    }
+```
 3) In javascript file or typescript and html file like :
 	
 ```javascript
@@ -93,22 +106,40 @@ func setupView() {
     const bridge = window.WebViewJavascriptBridge;
     // JS tries to call the native method to judge whether it has been loaded successfully and let itself know whether its user is in android app or IOS app
     bridge.callHandler('DeviceLoadJavascriptSuccess', {key: 'JSValue'}, function(response) {
-    let result = response.result
-    if (result === "iOS") {
-    console.log("Javascript was loaded by IOS and successfully loaded.");
-    window.iOSLoadJSSuccess = true;
-} else if (result === "Android") {
-    console.log("Javascript was loaded by Android and successfully loaded.");
-    window.AndroidLoadJSSuccess = true;
-}
-})
+        let result = response.result
+        if (result === "iOS") {
+        console.log("Javascript was loaded by IOS and successfully loaded.");
+        window.iOSLoadJSSuccess = true;
+        } else if (result === "Android") {
+        console.log("Javascript was loaded by Android and successfully loaded.");
+        window.AndroidLoadJSSuccess = true;
+       }
+    });
     // JS register method is called by native
     bridge.registerHandler('GetToken', function(data, responseCallback) {
-    console.log(data);
-    let result = {token: "I am javascript's token"}
-    //JS gets the data and returns it to the native
-    responseCallback(result)
-})
+        console.log(data);
+        let result = {token: "I am javascript's token"}
+        //JS gets the data and returns it to the native
+        responseCallback(result)
+    });
+    
+    bridge.registerHandler('AsyncCall', function(data, responseCallback) {
+        console.log(data);
+        //Call await function must with  (async () => {})();
+        (async () => {
+            const callback = await generatorLogNumber(1);
+            let result = {token: callback};
+            responseCallback(result);
+        })();
+    });
+
+    function generatorLogNumber(n){
+        return new Promise(res => {
+            setTimeout(() => {
+            res("Javascript async/await callback Ok");
+              }, 1000);
+        });
+     }
 </script>
 ```
 # Contact
