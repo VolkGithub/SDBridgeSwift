@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "SDBridgeSwift"
-  s.version      = "1.0.2"
+  s.version      = "1.0.3"
   s.summary      = "Simple Design for Swift bridge with Javascript. Also can get js console.log."
 
   # This description is used to generate tags and improve search results.
@@ -89,7 +89,7 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = 'WebViewJavascriptBridge/*.{swift,js}'
+  s.source_files  = 'WebViewJavascriptBridge'
   # s.exclude_files = "Classes/Exclude"
 
   # s.public_header_files = "Classes/**/*.h"
