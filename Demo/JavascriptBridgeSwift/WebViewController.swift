@@ -76,7 +76,7 @@ class WebViewController: UIViewController {
         view.addSubview(callJSAsyncBtn)
     }
     @objc func callSyncFunction(_ sender:UIButton){
-        let data = ["iOSKey": "iOSValue"]
+        let data = ["iOSKey00": "iOSValue00"]
         bridge.call(handlerName: "GetToken", data: data) { responseData in
             guard let res = responseData else {
                 print("Javascript console.log give native is nil!")
@@ -86,7 +86,7 @@ class WebViewController: UIViewController {
         }
     }
     @objc func callJSAsyncFunction(_ sender:UIButton){
-        let data = ["iOSKey": "iOSValue"]
+        let data = ["iOSKey01": "iOSValue01"]
         bridge.call(handlerName: "AsyncCall", data: data) { responseData in
             guard let res = responseData else {
                 print("Javascript console.log give native is nil!")
