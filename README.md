@@ -150,4 +150,4 @@ func setupView() {
 
 ## License
 
-SDBridgeSwift is released under the MIT license. [See LICENSE](https://github.com/SDBridge/SDBridgeSwift/blob/main/JavascriptBridgeSwift/LICENSE) for details.
+SDBridgeSwift is released under the MIT license. [See LICENSE](https://github.com/SDBridge/SDBridgeSwift/blob/main/LICENSE) for details.
