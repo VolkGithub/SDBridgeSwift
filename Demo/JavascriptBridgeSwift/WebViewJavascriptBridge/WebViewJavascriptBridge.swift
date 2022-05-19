@@ -55,11 +55,7 @@ public class WebViewJavascriptBridge: NSObject {
     }
    
     private func injectJavascriptFile(_ otherJSCode: String = "") {
-//        let path = Bundle.main.path(forResource: "bridge", ofType: "js")
-//        guard let bridgeJS1 = try? String.init(contentsOfFile: path!) else { return }
         let bridgeJS = JavascriptCode.bridge()
-//        let path1 = Bundle.main.path(forResource: "hookConsole", ofType: "js")
-//        guard let hookConsoleJS1 = try? String.init(contentsOfFile: path1!) else { return }
         let hookConsoleJS = JavascriptCode.hookConsole()
         let finalJS =  "\(bridgeJS)" + "\(hookConsoleJS)"
         let userScript = WKUserScript.init(source: finalJS, injectionTime: .atDocumentStart, forMainFrameOnly: true)
