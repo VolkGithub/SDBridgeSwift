@@ -65,7 +65,12 @@ class WebViewController: UIViewController {
             let data = ["result":"iOS"]
             callback?(data)
         }
+        
+        // index.html use SDBridge.js. This js file was create by webpack.
+//        let fileURL = URL.init(fileURLWithPath: Bundle.main.path(forResource: "index", ofType: "html")!)
+
         let fileURL = URL.init(fileURLWithPath: Bundle.main.path(forResource: "Demo", ofType: "html")!)
+
         let request = URLRequest.init(url: fileURL, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 15.0)
         webView.navigationDelegate = self;
         // Loading html in local ，This way maybe meet cross domain. So You should not forget to set
