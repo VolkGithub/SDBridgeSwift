@@ -147,9 +147,19 @@ func setupView() {
      }
 </script>
 ```
-# Contact
+# Global support for free
+WhatsApp:
+[SDBridgeSwift Support](https://chat.whatsapp.com/JLecXc5AeUh1fnii5tTuT1)
 
-- Email: housenkui@gmail.com
+Telegram:
+[SDBridgeSwift Support](https://t.me/+5QQvIZRYwwcyYWRl)
+
+WeChat Group:
+
+![](Resource/SDBridgeSwiftSupport.JPG)
+
+Email:
+housenkui@gmail.com
 
 ## License
 
