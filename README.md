@@ -164,7 +164,7 @@ housenkui@gmail.com
 # History version update ?
 [v1.0.4](https://github.com/SDBridge/SDBridgeSwift)
 
-1.Swift can get console.log [Multi parameter]().
+1.Swift can get console.log [Multi parameter](https://github.com/SDBridge/SDBridgeSwift/blob/main/WebViewJavascriptBridge/JavascriptCode.swift#L74).
 
 ## License
 
