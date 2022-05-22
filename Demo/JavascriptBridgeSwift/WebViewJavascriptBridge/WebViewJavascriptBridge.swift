@@ -22,12 +22,12 @@ enum PipeType: String {
     case normal
     case console
 }
-typealias ConsolePipeClosure = ((Any?) -> Void)
+public typealias ConsolePipeClosure = ((Any?) -> Void)
 
 public class WebViewJavascriptBridge: NSObject {
     private weak var webView: WKWebView?
     private var base: WebViewJavascriptBridgeBase!
-    var consolePipeClosure: ConsolePipeClosure?
+    public var consolePipeClosure: ConsolePipeClosure?
     public init(webView: WKWebView,_ otherJSCode: String = "") {
         super.init()
         self.webView = webView
