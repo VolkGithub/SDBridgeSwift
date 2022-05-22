@@ -2,7 +2,7 @@
 ![language](https://img.shields.io/badge/Language-Swift-green)
 ![language](https://img.shields.io/badge/support-Javascript/Async/Await-green)
 [![Support](https://img.shields.io/badge/support-iOS%209%2B%20-FB7DEC.svg?style=flat)](https://www.apple.com/nl/ios/)&nbsp;
-[![CocoaPods](https://img.shields.io/badge/pod-v1.0.3-green)](http://cocoapods.org/pods/SDBridgeSwift)
+[![CocoaPods](https://img.shields.io/badge/pod-v1.0.4-green)](http://cocoapods.org/pods/SDBridgeSwift)
 [![CocoaPods](https://img.shields.io/badge/support-SwiftPackageManagr-green)](https://www.swift.org/getting-started/#using-the-package-manager)
 
 [SDBridgeOC](https://github.com/SDBridge/SDBridgeOC) is [here](https://github.com/SDBridge/SDBridgeOC).
@@ -14,7 +14,7 @@ If your h5 partner confused about how to deal with iOS and Android.
 Add this to your [podfile](https://guides.cocoapods.org/using/getting-started.html) and run `pod install` to install:
 
 ```ruby
-pod 'SDBridgeSwift', '~> 1.0.3'
+pod 'SDBridgeSwift', '~> 1.0.4'
 ```
 If you can't find the last version, maybe you need to update local pod repo.
 ```ruby
@@ -160,6 +160,11 @@ WeChat Group:
 
 Email:
 housenkui@gmail.com
+
+# History version update ?
+[v1.0.4](https://github.com/SDBridge/SDBridgeSwift)
+
+1.Swift can get console.log [Multi parameter]().
 
 ## License
 
