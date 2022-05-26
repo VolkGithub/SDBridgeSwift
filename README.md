@@ -12,6 +12,9 @@ If your h5 partner confused about how to deal with iOS and Android.
 
 [YouTube video is here](https://www.youtube.com/results?search_query=SDBridgeSwift).
 
+[bilibili Video is here](https://search.bilibili.com/all?vt=57847329&keyword=SDBridgeSwift&from_source=webtop_search).
+
+
 
 ### Installation with CocoaPods
 Add this to your [podfile](https://guides.cocoapods.org/using/getting-started.html) and run `pod install` to install:
