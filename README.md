@@ -10,7 +10,7 @@
 If your h5 partner confused about how to deal with iOS and Android.
 [This Demo maybe help](https://github.com/SDBridge/TypeScriptDemo).
 
-[YouTube video is here](https://www.youtube.com/results?search_query=SDBridgeSwift).
+[YouTube video is here](https://www.youtube.com/channel/UCejg0KqpAvoEem4v5y1QbpA/videos).
 
 [bilibili Video is here](https://search.bilibili.com/all?vt=57847329&keyword=SDBridgeSwift&from_source=webtop_search).
 
