@@ -12,7 +12,7 @@ If your h5 partner confused about how to deal with iOS and Android.
 
 [YouTube video is here](https://www.youtube.com/channel/UCejg0KqpAvoEem4v5y1QbpA/videos).
 
-[bilibili Video is here](https://search.bilibili.com/all?vt=57847329&keyword=SDBridgeSwift&from_source=webtop_search).
+[视频接入教程和常见问题都在这里（遇到问题一定要看哦😯 ）](https://search.bilibili.com/all?vt=57847329&keyword=SDBridgeSwift&from_source=webtop_search).
 
 
 
