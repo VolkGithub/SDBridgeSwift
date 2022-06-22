@@ -162,7 +162,7 @@ Telegram:
 
 WeChat Group:
 
-![](Resource/SDBridgeSwiftSupport.JPG)
+![](Resource/wechat.png)
 
 Email:
 housenkui@gmail.com
