@@ -160,7 +160,7 @@ WhatsApp:
 Telegram:
 [SDBridgeSwift Support](https://t.me/+5QQvIZRYwwcyYWRl)
 
-WeChat Group:
+WeChat :
 
 ![](Resource/wechat.png)
 
