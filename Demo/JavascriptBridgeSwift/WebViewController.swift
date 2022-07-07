@@ -112,4 +112,17 @@ extension WebViewController: WKNavigationDelegate {
             completionHandler(.useCredential,card)
         }
     }
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        print("didFail---->")
+        print(error)
+
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        print("didFinish---->")
+    }
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        print("didStartProvisionalNavigation---->")
+    }
+   
 }

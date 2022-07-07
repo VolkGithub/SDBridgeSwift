@@ -21,11 +21,13 @@ protocol WebViewJavascriptBridgeBaseDelegate: AnyObject {
     typealias CompletionHandler = ((Any?, Error?) -> Void)?
     func evaluateJavascript(javascript: String, completion: CompletionHandler)
 }
+
 extension WebViewJavascriptBridgeBaseDelegate {
     func evaluateJavascript(javascript: String) {
         evaluateJavascript(javascript: javascript, completion: nil)
     }
 }
+
 public class WebViewJavascriptBridgeBase: NSObject {
     public typealias Callback = (_ responseData: Any?) -> Void
     public typealias Handler = (_ parameters: [String: Any]?, _ callback: Callback?) -> Void
@@ -38,6 +40,7 @@ public class WebViewJavascriptBridgeBase: NSObject {
         responseCallbacks = [String: Callback]()
         uniqueId = 0
     }
+
     func send(handlerName: String, data: Any?, callback: Callback?) {
         var message = [String: Any]()
         message["handlerName"] = handlerName
@@ -52,6 +55,7 @@ public class WebViewJavascriptBridgeBase: NSObject {
         }
         dispatch(message: message)
     }
+
     func flush(messageQueueString: String) {
         guard let message = deserialize(messageJSON: messageQueueString) else {
             return
@@ -63,13 +67,13 @@ public class WebViewJavascriptBridgeBase: NSObject {
         } else {
             var callback: Callback?
             if let callbackID = message["callbackId"] {
-                callback = { (_ responseData: Any?) -> Void in
+                callback = { (_ responseData: Any?) in
                     let msg = ["responseId": callbackID, "responseData": responseData ?? NSNull()] as Message
                     self.dispatch(message: msg)
                 }
             } else {
-                callback = { (_ responseData: Any?) -> Void in
-                    //no logic
+                callback = { (_: Any?) in
+                    // no logic
                     print("no logic")
                 }
             }
@@ -78,12 +82,13 @@ public class WebViewJavascriptBridgeBase: NSObject {
                 print("NoHandlerException, No handler for message from JS: \(message)")
                 return
             }
-            handler(message["data"] as? [String : Any], callback)
+            handler(message["data"] as? [String: Any], callback)
         }
     }
+
     private func dispatch(message: Message) {
         guard var messageJSON = serialize(message: message, pretty: false) else { return }
-        
+
         messageJSON = messageJSON.replacingOccurrences(of: "\\", with: "\\\\")
         messageJSON = messageJSON.replacingOccurrences(of: "\"", with: "\\\"")
         messageJSON = messageJSON.replacingOccurrences(of: "\'", with: "\\\'")
@@ -92,7 +97,7 @@ public class WebViewJavascriptBridgeBase: NSObject {
         messageJSON = messageJSON.replacingOccurrences(of: "\u{000C}", with: "\\f")
         messageJSON = messageJSON.replacingOccurrences(of: "\u{2028}", with: "\\u2028")
         messageJSON = messageJSON.replacingOccurrences(of: "\u{2029}", with: "\\u2029")
-        
+
         let javascriptCommand = "WebViewJavascriptBridge.handleMessageFromNative('\(messageJSON)');"
         if Thread.current.isMainThread {
             delegate?.evaluateJavascript(javascript: javascriptCommand)
@@ -102,26 +107,28 @@ public class WebViewJavascriptBridgeBase: NSObject {
             }
         }
     }
+
     // MARK: - JSON
+
     private func serialize(message: Message, pretty: Bool) -> String? {
         var result: String?
         do {
             let data = try JSONSerialization.data(withJSONObject: message, options: pretty ? .prettyPrinted : JSONSerialization.WritingOptions(rawValue: 0))
             result = String(data: data, encoding: .utf8)
-        } catch let error {
-            print(error)
-        }
-        return result
-    }
-    private func deserialize(messageJSON: String) -> Message? {
-        var result = Message()
-        guard let data = messageJSON.data(using: .utf8) else { return nil }
-        do {
-            result = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! WebViewJavascriptBridgeBase.Message
-        } catch let error {
+        } catch {
             print(error)
         }
         return result
     }
 
+    private func deserialize(messageJSON: String) -> Message? {
+        var result = Message()
+        guard let data = messageJSON.data(using: .utf8) else { return nil }
+        do {
+            result = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! WebViewJavascriptBridgeBase.Message
+        } catch {
+            print(error)
+        }
+        return result
+    }
 }

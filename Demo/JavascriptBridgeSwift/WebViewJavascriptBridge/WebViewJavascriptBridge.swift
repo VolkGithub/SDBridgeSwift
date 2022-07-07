@@ -28,7 +28,7 @@ public class WebViewJavascriptBridge: NSObject {
     private weak var webView: WKWebView?
     private var base: WebViewJavascriptBridgeBase!
     public var consolePipeClosure: ConsolePipeClosure?
-    public init(webView: WKWebView,_ otherJSCode: String = "") {
+    public init(webView: WKWebView,_ otherJSCode: String = "",injectionTime: WKUserScriptInjectionTime = .atDocumentStart) {
         super.init()
         self.webView = webView
         base = WebViewJavascriptBridgeBase()
@@ -54,11 +54,11 @@ public class WebViewJavascriptBridge: NSObject {
         base.send(handlerName: handlerName, data: data, callback: callback)
     }
    
-    private func injectJavascriptFile(_ otherJSCode: String = "") {
+    private func injectJavascriptFile(_ otherJSCode: String = "",injectionTime: WKUserScriptInjectionTime = .atDocumentStart) {
         let bridgeJS = JavascriptCode.bridge()
         let hookConsoleJS = JavascriptCode.hookConsole()
         let finalJS =  "\(bridgeJS)" + "\(hookConsoleJS)"
-        let userScript = WKUserScript.init(source: finalJS, injectionTime: .atDocumentStart, forMainFrameOnly: true)
+        let userScript = WKUserScript.init(source: finalJS, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
         webView?.configuration.userContentController.addUserScript(userScript)
         if !otherJSCode.isEmpty {
             let otherScript = WKUserScript.init(source: otherJSCode, injectionTime: .atDocumentStart, forMainFrameOnly: true)
