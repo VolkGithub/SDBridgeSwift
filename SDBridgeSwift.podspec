@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "SDBridgeSwift"
-  s.version      = "1.0.8"
+  s.version      = "1.0.9"
   s.summary      = "Simple Design for Swift bridge with Javascript. Also can get js console.log."
 
   # This description is used to generate tags and improve search results.
