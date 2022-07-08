@@ -35,7 +35,7 @@ public class WebViewJavascriptBridge: NSObject {
         base = WebViewJavascriptBridgeBase()
         base.delegate = self
         addScriptMessageHandlers()
-        injectJavascriptFile(otherJSCode)
+        injectJavascriptFile(otherJSCode, injectionTime: injectionTime)
     }
 
     deinit {
@@ -61,7 +61,7 @@ public class WebViewJavascriptBridge: NSObject {
         base.send(handlerName: handlerName, data: data, callback: callback)
     }
 
-    private func injectJavascriptFile(_ otherJSCode: String = "",injectionTime: WKUserScriptInjectionTime = .atDocumentStart) {
+    private func injectJavascriptFile(_ otherJSCode: String = "", injectionTime: WKUserScriptInjectionTime = .atDocumentStart) {
         let bridgeJS = JavascriptCode.bridge()
         let hookConsoleJS = JavascriptCode.hookConsole()
         let finalJS = "\(bridgeJS)" + "\(hookConsoleJS)"

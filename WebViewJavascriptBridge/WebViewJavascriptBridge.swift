@@ -35,7 +35,7 @@ public class WebViewJavascriptBridge: NSObject {
         base = WebViewJavascriptBridgeBase()
         base.delegate = self
         addScriptMessageHandlers()
-        injectJavascriptFile(otherJSCode)
+        injectJavascriptFile(otherJSCode, injectionTime: injectionTime)
     }
 
     deinit {
