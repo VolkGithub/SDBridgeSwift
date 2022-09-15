@@ -16,7 +16,7 @@ If your h5 partner confused about how to deal with iOS and Android.
 
 
 
-### Installation with CocoaPods
+### Installation with CocoaPods 
 Add this to your [podfile](https://guides.cocoapods.org/using/getting-started.html) and run `pod install` to install:
 
 ```ruby
