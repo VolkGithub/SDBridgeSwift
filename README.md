@@ -153,19 +153,6 @@ func setupView() {
      }
 </script>
 ```
-# Global support for free
-WhatsApp:
-[SDBridgeSwift Support](https://chat.whatsapp.com/JLecXc5AeUh1fnii5tTuT1)
-
-Telegram:
-[SDBridgeSwift Support](https://t.me/+5QQvIZRYwwcyYWRl)
-
-WeChat :
-
-![](Resource/wechat.png)
-
-Email:
-housenkui@gmail.com
 
 # History version update ?
 [v1.0.4](https://github.com/SDBridge/SDBridgeSwift)
