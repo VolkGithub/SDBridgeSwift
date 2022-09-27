@@ -20,7 +20,7 @@ If your h5 partner confused about how to deal with iOS and Android.
 Add this to your [podfile](https://guides.cocoapods.org/using/getting-started.html) and run `pod install` to install:
 
 ```ruby
-pod 'SDBridgeSwift', '~> 1.0.9'
+pod 'SDBridgeSwift', '~> 1.1.0'
 ```
 If you can't find the last version, maybe you need to update local pod repo.
 ```ruby
@@ -33,7 +33,7 @@ The Swift Package Manager is a tool for automating the distribution of Swift cod
 Once you have your Swift package set up, adding SDBridgeSwift as a dependency is as easy as adding it to the dependencies value of your Package.swift.
 ```ruby
 dependencies: [
-    .package(url: "https://github.com/SDBridge/SDBridgeSwift", .upToNextMajor(from: "1.0.9"))
+    .package(url: "https://github.com/SDBridge/SDBridgeSwift", .upToNextMajor(from: "1.1.0"))
 ]
 ```
 
