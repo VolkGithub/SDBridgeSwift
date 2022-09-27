@@ -49,7 +49,7 @@ class WebViewController: UIViewController {
         title = "WebViewController"
         view.backgroundColor = .white
         view.addSubview(webView)
-        bridge = WebViewJavascriptBridge(webView: webView)
+        bridge = WebViewJavascriptBridge(webView: webView,isHookConsole: false)
         
         // This can get javascript console.log
         bridge.consolePipeClosure = { water in

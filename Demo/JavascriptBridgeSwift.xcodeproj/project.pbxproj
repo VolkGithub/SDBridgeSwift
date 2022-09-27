@@ -13,13 +13,13 @@
 		4B23EBDB27E9A948003F6F60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B23EBD927E9A948003F6F60 /* Main.storyboard */; };
 		4B23EBDD27E9A949003F6F60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B23EBDC27E9A949003F6F60 /* Assets.xcassets */; };
 		4B23EBE027E9A949003F6F60 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B23EBDE27E9A949003F6F60 /* LaunchScreen.storyboard */; };
-		4B23EBEC27E9A96E003F6F60 /* WebViewJavascriptBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B23EBE827E9A96E003F6F60 /* WebViewJavascriptBridge.swift */; };
-		4B23EBEF27E9A96E003F6F60 /* WebViewJavascriptBridgeBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B23EBEB27E9A96E003F6F60 /* WebViewJavascriptBridgeBase.swift */; };
 		4B23EBF127E9AB5B003F6F60 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B23EBF027E9AB5B003F6F60 /* WebViewController.swift */; };
 		4B23EBF327E9AF14003F6F60 /* Demo.html in Resources */ = {isa = PBXBuildFile; fileRef = 4B23EBF227E9AF14003F6F60 /* Demo.html */; };
 		EF35D15C28369823007848B4 /* SDBridge.js in Resources */ = {isa = PBXBuildFile; fileRef = EF35D15B28369823007848B4 /* SDBridge.js */; };
 		EF35D15E28369828007848B4 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = EF35D15D28369828007848B4 /* index.html */; };
-		EF564796282E800400C78FF3 /* JavascriptCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF564795282E800400C78FF3 /* JavascriptCode.swift */; };
+		EFE5D61528E2D0A6002A3F65 /* WebViewJavascriptBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE5D61228E2D0A6002A3F65 /* WebViewJavascriptBridge.swift */; };
+		EFE5D61628E2D0A6002A3F65 /* JavascriptCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE5D61328E2D0A6002A3F65 /* JavascriptCode.swift */; };
+		EFE5D61728E2D0A6002A3F65 /* WebViewJavascriptBridgeBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE5D61428E2D0A6002A3F65 /* WebViewJavascriptBridgeBase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,13 +31,13 @@
 		4B23EBDC27E9A949003F6F60 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4B23EBDF27E9A949003F6F60 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4B23EBE127E9A949003F6F60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4B23EBE827E9A96E003F6F60 /* WebViewJavascriptBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewJavascriptBridge.swift; sourceTree = "<group>"; };
-		4B23EBEB27E9A96E003F6F60 /* WebViewJavascriptBridgeBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewJavascriptBridgeBase.swift; sourceTree = "<group>"; };
 		4B23EBF027E9AB5B003F6F60 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		4B23EBF227E9AF14003F6F60 /* Demo.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Demo.html; sourceTree = "<group>"; };
 		EF35D15B28369823007848B4 /* SDBridge.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = SDBridge.js; sourceTree = "<group>"; };
 		EF35D15D28369828007848B4 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
-		EF564795282E800400C78FF3 /* JavascriptCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JavascriptCode.swift; sourceTree = "<group>"; };
+		EFE5D61228E2D0A6002A3F65 /* WebViewJavascriptBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewJavascriptBridge.swift; sourceTree = "<group>"; };
+		EFE5D61328E2D0A6002A3F65 /* JavascriptCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JavascriptCode.swift; sourceTree = "<group>"; };
+		EFE5D61428E2D0A6002A3F65 /* WebViewJavascriptBridgeBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewJavascriptBridgeBase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,7 +70,7 @@
 		4B23EBD227E9A948003F6F60 /* JavascriptBridgeSwift */ = {
 			isa = PBXGroup;
 			children = (
-				4B23EBE727E9A96E003F6F60 /* WebViewJavascriptBridge */,
+				EFE5D61128E2D0A6002A3F65 /* WebViewJavascriptBridge */,
 				4B23EBD327E9A948003F6F60 /* AppDelegate.swift */,
 				4B23EBD527E9A948003F6F60 /* SceneDelegate.swift */,
 				4B23EBD727E9A948003F6F60 /* ViewController.swift */,
@@ -86,12 +86,12 @@
 			path = JavascriptBridgeSwift;
 			sourceTree = "<group>";
 		};
-		4B23EBE727E9A96E003F6F60 /* WebViewJavascriptBridge */ = {
+		EFE5D61128E2D0A6002A3F65 /* WebViewJavascriptBridge */ = {
 			isa = PBXGroup;
 			children = (
-				4B23EBE827E9A96E003F6F60 /* WebViewJavascriptBridge.swift */,
-				EF564795282E800400C78FF3 /* JavascriptCode.swift */,
-				4B23EBEB27E9A96E003F6F60 /* WebViewJavascriptBridgeBase.swift */,
+				EFE5D61328E2D0A6002A3F65 /* JavascriptCode.swift */,
+				EFE5D61228E2D0A6002A3F65 /* WebViewJavascriptBridge.swift */,
+				EFE5D61428E2D0A6002A3F65 /* WebViewJavascriptBridgeBase.swift */,
 			);
 			path = WebViewJavascriptBridge;
 			sourceTree = "<group>";
@@ -171,11 +171,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B23EBD827E9A948003F6F60 /* ViewController.swift in Sources */,
+				EFE5D61628E2D0A6002A3F65 /* JavascriptCode.swift in Sources */,
 				4B23EBF127E9AB5B003F6F60 /* WebViewController.swift in Sources */,
-				4B23EBEF27E9A96E003F6F60 /* WebViewJavascriptBridgeBase.swift in Sources */,
-				4B23EBEC27E9A96E003F6F60 /* WebViewJavascriptBridge.swift in Sources */,
+				EFE5D61528E2D0A6002A3F65 /* WebViewJavascriptBridge.swift in Sources */,
 				4B23EBD427E9A948003F6F60 /* AppDelegate.swift in Sources */,
-				EF564796282E800400C78FF3 /* JavascriptCode.swift in Sources */,
+				EFE5D61728E2D0A6002A3F65 /* WebViewJavascriptBridgeBase.swift in Sources */,
 				4B23EBD627E9A948003F6F60 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

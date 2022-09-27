@@ -22,74 +22,86 @@ enum PipeType: String {
     case normal
     case console
 }
-public typealias ConsolePipeClosure = ((Any?) -> Void)
+
+public typealias ConsolePipeClosure = (Any?) -> Void
 
 public class WebViewJavascriptBridge: NSObject {
     private weak var webView: WKWebView?
     private var base: WebViewJavascriptBridgeBase!
     public var consolePipeClosure: ConsolePipeClosure?
-    public init(webView: WKWebView,_ otherJSCode: String = "",injectionTime: WKUserScriptInjectionTime = .atDocumentStart) {
+    public init(webView: WKWebView, _ otherJSCode: String = "",isHookConsole: Bool = true, injectionTime: WKUserScriptInjectionTime = .atDocumentStart) {
         super.init()
         self.webView = webView
         base = WebViewJavascriptBridgeBase()
         base.delegate = self
         addScriptMessageHandlers()
-        injectJavascriptFile(otherJSCode, injectionTime: injectionTime)
+        injectJavascriptFile(otherJSCode, isHookConsole: isHookConsole,injectionTime: injectionTime)
     }
+
     deinit {
         print("\(type(of: self)) release")
         removeScriptMessageHandlers()
     }
+
     // MARK: - Public Funcs
+
     public func reset() {
         base.reset()
     }
+
     public func register(handlerName: String, handler: @escaping WebViewJavascriptBridgeBase.Handler) {
         base.messageHandlers[handlerName] = handler
     }
+
     public func remove(handlerName: String) -> WebViewJavascriptBridgeBase.Handler? {
         return base.messageHandlers.removeValue(forKey: handlerName)
     }
+
     public func call(handlerName: String, data: Any? = nil, callback: WebViewJavascriptBridgeBase.Callback? = nil) {
         base.send(handlerName: handlerName, data: data, callback: callback)
     }
-   
-    private func injectJavascriptFile(_ otherJSCode: String = "",injectionTime: WKUserScriptInjectionTime = .atDocumentStart) {
+
+    private func injectJavascriptFile(_ otherJSCode: String = "", isHookConsole: Bool ,injectionTime: WKUserScriptInjectionTime = .atDocumentStart) {
         let bridgeJS = JavascriptCode.bridge()
-        let hookConsoleJS = JavascriptCode.hookConsole()
+        let hookConsoleJS = isHookConsole ? JavascriptCode.hookConsole() : ""
         let finalJS =  "\(bridgeJS)" + "\(hookConsoleJS)"
-        let userScript = WKUserScript.init(source: finalJS, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
+        let userScript = WKUserScript(source: finalJS, injectionTime: injectionTime, forMainFrameOnly: true)
         webView?.configuration.userContentController.addUserScript(userScript)
         if !otherJSCode.isEmpty {
-            let otherScript = WKUserScript.init(source: otherJSCode, injectionTime: .atDocumentStart, forMainFrameOnly: true)
+            let otherScript = WKUserScript(source: otherJSCode, injectionTime: .atDocumentStart, forMainFrameOnly: true)
             webView?.configuration.userContentController.addUserScript(otherScript)
         }
     }
+
     private func addScriptMessageHandlers() {
         webView?.configuration.userContentController.add(LeakAvoider(delegate: self), name: PipeType.normal.rawValue)
         webView?.configuration.userContentController.add(LeakAvoider(delegate: self), name: PipeType.console.rawValue)
     }
+
     private func removeScriptMessageHandlers() {
         webView?.configuration.userContentController.removeScriptMessageHandler(forName: PipeType.normal.rawValue)
         webView?.configuration.userContentController.removeScriptMessageHandler(forName: PipeType.console.rawValue)
     }
 }
+
 extension WebViewJavascriptBridge: WebViewJavascriptBridgeBaseDelegate {
     func evaluateJavascript(javascript: String, completion: CompletionHandler) {
         webView?.evaluateJavaScript(javascript, completionHandler: completion)
     }
 }
+
 extension WebViewJavascriptBridge: WKScriptMessageHandler {
     public func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         if message.name == PipeType.console.rawValue {
             consolePipeClosure?(message.body)
         } else if message.name == PipeType.normal.rawValue {
             let body = message.body as? String
-            guard let resultStr = body else {return}
-            self.base.flush(messageQueueString: resultStr)
+            guard let resultStr = body else { return }
+            base.flush(messageQueueString: resultStr)
         }
     }
 }
+
 class LeakAvoider: NSObject {
     weak var delegate: WKScriptMessageHandler?
     init(delegate: WKScriptMessageHandler) {
@@ -97,6 +109,7 @@ class LeakAvoider: NSObject {
         self.delegate = delegate
     }
 }
+
 extension LeakAvoider: WKScriptMessageHandler {
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         delegate?.userContentController(userContentController, didReceive: message)
